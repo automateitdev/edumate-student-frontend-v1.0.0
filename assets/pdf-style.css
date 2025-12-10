@@ -1,0 +1,130 @@
+/* pdf-styles.css */
+.receipt-root {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 10mm;
+  margin: 0;
+  box-sizing: border-box;
+  background: #ffffff;
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  display: block;
+  border: 2px solid #333;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.logo-and-info {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.text-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-title {
+  font-size: 1.45em;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.receipt-address {
+  font-size: 1.07em;
+}
+
+.receipt-title-center {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.13em;
+  margin-bottom: 7px;
+  margin-top: 2px;
+  text-decoration: underline;
+  width: 100%;
+}
+
+.receipt-detail-cols {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.details-table {
+  font-size: 1em;
+  border: none;
+  background: none;
+}
+
+.details-table td {
+  padding: 1px 6px 1px 0;
+  border: none;
+  vertical-align: top;
+  background: none;
+}
+
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 0.95em;
+  page-break-inside: avoid;
+}
+
+.fee-table th,
+.fee-table td {
+  padding: 2px 5px;
+  border: 1px solid #888;
+}
+
+.fee-table th {
+  background: #f0f0f0;
+  font-weight: bold;
+  font-size: 1.04em;
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+  color: #223;
+  margin: 12px 0 7px 0;
+}
+
+table {
+  page-break-inside: avoid;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}

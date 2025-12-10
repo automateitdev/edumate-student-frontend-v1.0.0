@@ -1,0 +1,59 @@
+name: Deploy
+
+on:
+  push:
+    branches: ["develop", "main"]
+  pull_request:
+    branches: ["develop", "main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Dynamically choose environment based on branch
+    environment: ${{ github.ref_name == 'main' && 'prod' || 'dev' }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            set -e
+
+            # Set deployment directory based on branch
+            if [ "${{ github.ref_name }}" = "main" ]; then
+              DEPLOY_DIR="/home/produser/web/student.academyims.com/public_html"
+            else
+              DEPLOY_DIR="/home/dev/web/student.edufee.online/public_html"
+            fi
+
+            if [ "${{ github.ref_name }}" = "main" ]; then
+              DEPLOY_SCRIPT="${DEPLOY_DIR}/.scripts/prod_deploy.sh"
+            else
+              DEPLOY_SCRIPT="${DEPLOY_DIR}/.scripts/dev_deploy.sh"
+            fi
+           
+
+            echo "🔍 Checking if deployment directory exists..."
+            if [ ! -d "$DEPLOY_DIR" ]; then
+              echo "❌ Error: Deployment directory not found at $DEPLOY_DIR"
+              exit 1
+            fi
+
+            echo "✅ Directory exists. Proceeding with deployment..."
+            cd "$DEPLOY_DIR"
+
+            echo "🔄 Making sure the deploy script is executable..."
+            chmod +x "$DEPLOY_SCRIPT"
+
+            echo "🚀 Running deployment script..."
+            "$DEPLOY_SCRIPT"
+
+            echo "🎉 Deployment completed successfully!"
