@@ -22,21 +22,21 @@ definePageMeta({
                 </svg>
             </div>
 
-            <p>Enter your registered email to get the password reset link</p>
+            <p>{{ $t('auth.forgot.message') }}</p>
             <div class="d-flex">
-                <InputText class="w-full" placeholder="Registered Email address here" required></InputText>
-                <Button class="w-full text-center mt-3" icon="pi pi-envelope" label="SUBMIT" size="small" />
+                <InputText class="w-full" :placeholder="$t('auth.forgot.email_placeholder')" required></InputText>
+                <Button class="w-full text-center mt-3 uppercase" icon="pi pi-envelope" :label="$t('common.submit')" size="small" />
             </div>
             <div class="col-12 mt-5 text-center">
                 <i class="pi pi-fw pi-arrow-left text-green-500 mr-2" style="vertical-align: center"></i>
-                <router-link to="/" class="text-green-500">Go to Dashboard</router-link>
+                <router-link to="/" class="text-green-500">{{ $t('common.go_to_dashboard') }}</router-link>
               </div>
               <div class="grid align-items-center justify-content-center">
                   <div>
                       <Icon name="flat-color-icons:money-transfer" color="black" size="20px" />
                   </div>
                   <div class="ml-3">
-                      <div class="text-sm font-bold m-0" style="color: rgb(212, 38, 38, 0.7)">Automate: Operation Portal</div>
+                      <div class="text-sm font-bold m-0" style="color: rgb(212, 38, 38, 0.7)">{{ $t('auth.forgot.footer') }}</div>
                   </div>
               </div>
         </div>
