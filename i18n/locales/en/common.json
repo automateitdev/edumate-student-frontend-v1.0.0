@@ -1,0 +1,63 @@
+{
+    "app": {
+        "title": "Payment Portal"
+    },
+    "common": {
+        "language": "Language",
+        "open_menu": "Open menu",
+        "toggle_menu": "Show or hide menu",
+        "home": "Home",
+        "sign_out": "Sign out",
+        "loading": "Loading…",
+        "go_to_dashboard": "Go to Dashboard",
+        "dashboard": "Dashboard",
+        "cancel": "Cancel",
+        "proceed": "Proceed",
+        "view": "View",
+        "download": "Download",
+        "print": "Print",
+        "submit": "Submit",
+        "actions": "Actions",
+        "status": "Status",
+        "date": "Date",
+        "amount": "Amount",
+        "name": "Name",
+        "no_data": "No data found",
+        "success_title": "Success!",
+        "warning_title": "Warning!",
+        "error_title": "Error",
+        "logo_alt": "Logo"
+    },
+    "errors": {
+        "generic": "Something went wrong. Please try again.",
+        "too_many_attempts": "Too many attempts. Wait a minute and try again.",
+        "unexpected": "An unexpected error occurred. Please try again.",
+        "login_failed": "An error occurred during sign-in.",
+        "empty_field": "Field must not be empty!",
+        "missing_value": "Missing form value.",
+        "data_added": "Data added successfully!"
+    },
+    "nav": {
+        "home": "Home",
+        "dashboard": "Dashboard",
+        "payments": "Payments",
+        "invoices": "Invoices",
+        "available_payment": "Available payments",
+        "logout": "Sign out"
+    },
+    "student": {
+        "heading": "{name} (SID: {id})",
+        "student_id": "Student ID",
+        "name": "Name",
+        "roll": "Roll No",
+        "category": "Category",
+        "department": "Department",
+        "class": "Class",
+        "shift": "Shift",
+        "section": "Section",
+        "group": "Group",
+        "academic_year": "Academic Year",
+        "session": "Session",
+        "class_shift_section": "Class-Shift-Section"
+    }
+}

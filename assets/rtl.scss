@@ -1,0 +1,150 @@
+$rtl-radius: 12px;
+
+// Right-to-left adjustments for Arabic. PrimeFlex and PrimeVue 3 use physical
+// left/right, so the most common utilities are mirrored here when <html dir="rtl">.
+
+[dir='rtl'] {
+    body {
+        text-align: right;
+    }
+
+    .text-left { text-align: right !important; }
+    .text-right { text-align: left !important; }
+
+    @each $n in 0, 1, 2, 3, 4, 5 {
+        .mr-#{$n} { margin-right: 0 !important; margin-left: #{$n * 0.25}rem !important; }
+        .ml-#{$n} { margin-left: 0 !important; margin-right: #{$n * 0.25}rem !important; }
+        .pr-#{$n} { padding-right: 0 !important; padding-left: #{$n * 0.25}rem !important; }
+        .pl-#{$n} { padding-left: 0 !important; padding-right: #{$n * 0.25}rem !important; }
+    }
+    .mr-auto { margin-right: 0 !important; margin-left: auto !important; }
+    .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+
+    .border-right-1 { border-right-width: 0 !important; border-left-width: 1px !important; border-left-style: solid; }
+    .border-left-1 { border-left-width: 0 !important; border-right-width: 1px !important; border-right-style: solid; }
+    .right-0 { right: auto !important; left: 0 !important; }
+    .left-0 { left: auto !important; right: 0 !important; }
+
+    // Directional arrows point the reading direction.
+    .pi-angle-right, .pi-angle-left, .pi-arrow-right, .pi-arrow-left,
+    .pi-chevron-right, .pi-chevron-left, .pi-angle-double-right, .pi-angle-double-left,
+    .pi-sign-in, .pi-sign-out {
+        transform: scaleX(-1);
+    }
+
+    // PrimeVue inputs with icons and dropdown triggers.
+    .p-input-icon-left > i, .p-input-icon-left > svg { left: auto; right: 0.75rem; }
+    .p-input-icon-left > .p-inputtext { padding-left: 0.75rem; padding-right: 2.5rem; }
+    .p-input-icon-right > i, .p-input-icon-right > svg { right: auto; left: 0.75rem; }
+    .p-input-icon-right > .p-inputtext { padding-right: 0.75rem; padding-left: 2.5rem; }
+    .p-dropdown-label, .p-multiselect-label { text-align: right; }
+    .p-datatable th, .p-datatable td { text-align: right; }
+    .p-button .p-button-icon-left { margin-right: 0; margin-left: 0.5rem; }
+    .p-button .p-button-icon-right { margin-left: 0; margin-right: 0.5rem; }
+    .p-paginator { direction: rtl; }
+    .p-toast { direction: rtl; }
+}
+
+// Sakai layout: the sidebar is fixed on the left and the content has a left
+// margin. In Arabic the sidebar sits on the right and everything mirrors.
+[dir='rtl'] {
+    .layout-sidebar {
+        left: auto;
+        right: 1rem;
+        transition: transform 0.2s, right 0.2s;
+    }
+    .layout-main-container {
+        padding: 6rem 2rem 2rem 1rem;
+        transition: margin-right 0.2s;
+    }
+    .layout-footer {
+        transition: margin-right 0.2s;
+    }
+
+    // Topbar
+    .layout-topbar {
+        .layout-topbar-logo img { margin-right: 0; margin-left: 0.5rem; }
+        .layout-menu-button { margin-left: 0; margin-right: 2rem; }
+        .layout-topbar-menu {
+            margin: 0 auto 0 0;
+            .layout-topbar-button { margin-left: 0; margin-right: 1rem; }
+        }
+    }
+
+    // Menu
+    .layout-menu ul {
+        a {
+            .layout-menuitem-icon { margin-right: 0; margin-left: 0.5rem; }
+            .layout-submenu-toggler { margin-left: 0; margin-right: auto; }
+        }
+        ul li a { margin-left: 0; margin-right: 1rem; }
+        ul li li a { margin-right: 2rem; }
+        ul li li li a { margin-right: 2.5rem; }
+    }
+
+    @media (min-width: 992px) {
+        .layout-wrapper {
+            &.layout-overlay {
+                .layout-main-container { margin-right: 0; padding-right: 2rem; }
+                .layout-sidebar {
+                    transform: translateX(100%);
+                    left: auto;
+                    right: 0;
+                    border-radius: 0;
+                    border-top-left-radius: $rtl-radius;
+                    border-bottom-left-radius: $rtl-radius;
+                }
+                &.layout-overlay-active .layout-sidebar { transform: translateX(0); }
+            }
+            &.layout-static {
+                .layout-main-container { margin-left: 0; margin-right: 300px; }
+                &.layout-static-inactive {
+                    .layout-sidebar { transform: translateX(calc(100% + 1rem)); left: auto; }
+                    .layout-main-container { margin-right: 0; padding-right: 2rem; }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 991px) {
+        .layout-topbar {
+            .layout-menu-button { margin-right: 0; }
+            .layout-topbar-menu-button { margin-right: 0; }
+            .layout-topbar-menu {
+                margin-right: 0;
+                right: auto;
+                left: 2rem;
+                .layout-topbar-button {
+                    margin-right: 0;
+                    i { margin-right: 0; margin-left: 0.5rem; }
+                }
+            }
+        }
+        .layout-wrapper {
+            .layout-main-container { margin-right: 0; padding-right: 2rem; }
+            .layout-sidebar {
+                transform: translateX(100%);
+                left: auto;
+                right: 0;
+                border-radius: 0;
+                border-top-left-radius: $rtl-radius;
+                border-bottom-left-radius: $rtl-radius;
+            }
+            &.layout-mobile-active .layout-sidebar { transform: translateX(0); }
+        }
+    }
+}
+
+// Scripts that need their own fonts. System fonts first, web font as fallback.
+:lang(bn) body, :lang(bn-BD) body {
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', var(--font-family), sans-serif;
+}
+:lang(ar) body {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, var(--font-family), sans-serif;
+}
+
+// styles.scss sets Anek Bangla on every element (*), which has no Arabic glyphs.
+// :where() keeps specificity at zero so icon fonts (.pi) still win.
+:where(:lang(ar)) * {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+}

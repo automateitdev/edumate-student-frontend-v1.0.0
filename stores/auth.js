@@ -2,6 +2,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import { useRouter } from 'nuxt/app';
+import { tg } from '~/utils/i18n';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
@@ -74,7 +75,7 @@ export const useAuthStore = defineStore('auth', {
                     return { loginSuccess: false, error: formattedErrors };
                 } else {
                     this.loading = false
-                    return { loginSuccess: false, error: "An error occurred during login." };
+                    return { loginSuccess: false, error: tg('errors.login_failed') };
                 }
             } finally {
                 this.loading = false;

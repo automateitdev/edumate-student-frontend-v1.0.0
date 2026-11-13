@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { defineStore } from 'pinia';
+import { tg } from '~/utils/i18n';
 
 export const usePaymentStore = defineStore('Payments', {
   state: () => ({
@@ -64,7 +65,7 @@ export const usePaymentStore = defineStore('Payments', {
           const formattedErrors = (errors || []).map(err => `${err.message}`).join('\n');
           return { status: false, error: formattedErrors };
         } else {
-          return { status: false, error: "Unexpected error occurred!" };
+          return { status: false, error: tg('errors.unexpected') };
         }
       } finally {
         this.isPaymentRequest = false;
@@ -89,7 +90,7 @@ export const usePaymentStore = defineStore('Payments', {
           const formattedErrors = (errors || []).map(err => `${err.message}`).join('\n');
           return { status: false, error: formattedErrors };
         } else {
-          return { status: false, error: "Unexpected error occurred!" };
+          return { status: false, error: tg('errors.unexpected') };
         }
       } finally {
         this.loading = false;

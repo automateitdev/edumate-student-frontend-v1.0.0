@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { currentLocale } from '~/utils/i18n';
 const request = axios.create({
     // baseURL: 'https://api.academyims.com/api/',
     baseURL: 'http://127.0.0.1:8000/api/',
@@ -9,6 +10,7 @@ request.interceptors.request.use(
         // console.log(2);
         const token = localStorage.getItem('authToken');
         const con = config || {};
+        con.headers['Accept-Language'] = currentLocale.value;
         if (token) {
             con.headers.Authorization = `Bearer ${token}`;
         }
