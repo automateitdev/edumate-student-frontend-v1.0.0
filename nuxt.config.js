@@ -31,12 +31,35 @@ export default defineNuxtConfig({
                     rel: 'stylesheet',
                     type: 'text/css',
                     href: '/themes/aura-light-green-custom/theme.css'
-                }
+                },
+                { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap' }
             ]
         }
     },
 
-    modules: ['nuxt-primevue', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', '@nuxt/image'],
+    modules: ['nuxt-primevue', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', '@nuxt/image', '@nuxtjs/i18n'],
+
+    // English, Bangla and Arabic. No URL prefixes: the choice is kept in the
+    // edumate_locale cookie, first visits follow the browser language.
+    i18n: {
+        strategy: 'no_prefix',
+        defaultLocale: 'en',
+        lazy: true,
+        langDir: 'locales',
+        vueI18n: './i18n.config.js',
+        locales: [
+            { code: 'en', language: 'en-US', name: 'English', file: 'en.js', dir: 'ltr' },
+            { code: 'bn', language: 'bn-BD', name: 'বাংলা', file: 'bn.js', dir: 'ltr' },
+            { code: 'ar', language: 'ar', name: 'العربية', file: 'ar.js', dir: 'rtl' }
+        ],
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'edumate_locale',
+            redirectOn: 'root',
+            fallbackLocale: 'en'
+        }
+    },
 
     primevue: {
         options: { ripple: true },
@@ -127,7 +150,7 @@ export default defineNuxtConfig({
         },
     },
 
-    plugins: ['~/plugins/axios.js'],
+    plugins: ['~/plugins/axios.js', '~/plugins/i18n-bridge.js'],
 
     pinia: {
         autoImports: ['defineStore'],
@@ -140,7 +163,7 @@ export default defineNuxtConfig({
         dirs: ['composables', 'composables/**']
     },
 
-    css: ['primeicons/primeicons.css', 'primeflex/primeflex.scss', 'primevue/resources/primevue.min.css', '@/assets/styles.scss'],
+    css: ['primeicons/primeicons.css', 'primeflex/primeflex.scss', 'primevue/resources/primevue.min.css', '@/assets/styles.scss', '@/assets/rtl.scss'],
     compatibilityDate: '2024-10-07',
     ssr: false
 });

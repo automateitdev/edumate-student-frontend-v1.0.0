@@ -1,0 +1,63 @@
+{
+    "app": {
+        "title": "بوابة الدفع"
+    },
+    "common": {
+        "language": "اللغة",
+        "open_menu": "فتح القائمة",
+        "toggle_menu": "إظهار القائمة أو إخفاؤها",
+        "home": "الرئيسية",
+        "sign_out": "تسجيل الخروج",
+        "loading": "جارٍ التحميل…",
+        "go_to_dashboard": "الانتقال إلى لوحة التحكم",
+        "dashboard": "لوحة التحكم",
+        "cancel": "إلغاء",
+        "proceed": "متابعة",
+        "view": "عرض",
+        "download": "تنزيل",
+        "print": "طباعة",
+        "submit": "إرسال",
+        "actions": "الإجراءات",
+        "status": "الحالة",
+        "date": "التاريخ",
+        "amount": "المبلغ",
+        "name": "الاسم",
+        "no_data": "لا توجد بيانات",
+        "success_title": "تم بنجاح!",
+        "warning_title": "تنبيه!",
+        "error_title": "خطأ",
+        "logo_alt": "الشعار"
+    },
+    "errors": {
+        "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+        "too_many_attempts": "محاولات كثيرة جدًا. انتظر دقيقة ثم حاول مرة أخرى.",
+        "unexpected": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+        "login_failed": "حدث خطأ أثناء تسجيل الدخول.",
+        "empty_field": "لا يجوز ترك الحقل فارغًا!",
+        "missing_value": "توجد قيمة ناقصة في النموذج.",
+        "data_added": "تمت إضافة البيانات بنجاح!"
+    },
+    "nav": {
+        "home": "الرئيسية",
+        "dashboard": "لوحة التحكم",
+        "payments": "المدفوعات",
+        "invoices": "الفواتير",
+        "available_payment": "المدفوعات المستحقة",
+        "logout": "تسجيل الخروج"
+    },
+    "student": {
+        "heading": "{name} (SID: {id})",
+        "student_id": "رقم الطالب",
+        "name": "الاسم",
+        "roll": "رقم القيد",
+        "category": "الفئة",
+        "department": "القسم",
+        "class": "الصف",
+        "shift": "الفترة",
+        "section": "الشعبة",
+        "group": "المجموعة",
+        "academic_year": "العام الدراسي",
+        "session": "الدورة الدراسية",
+        "class_shift_section": "الصف - الفترة - الشعبة"
+    }
+}

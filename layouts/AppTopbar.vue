@@ -78,7 +78,7 @@ const isOutsideClicked = (event) => {
             <h4 class="text-primary font-bold m-0 text-center mx-auto"><icon class="pi pi-wallet"></icon> EduFee</h4>
         </router-link>
 
-        <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+        <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()" :aria-label="$t('common.toggle_menu')">
             <!-- <i class="pi pi-bars"></i> -->
             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
                 <g fill="none" stroke="currentColor" stroke-dasharray="24" stroke-dashoffset="24" stroke-linecap="round" stroke-width="2">
@@ -89,7 +89,7 @@ const isOutsideClicked = (event) => {
             </svg>
         </button>
 
-        <button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
+        <button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()" :aria-label="$t('common.open_menu')">
             <i class="pi pi-ellipsis-v"></i>
         </button>
 
@@ -107,8 +107,9 @@ const isOutsideClicked = (event) => {
                 <span>logout</span>
             </button> -->
             <div class="flex align-items-center justify-content-end gap-3">
-                <a href="/" class="text-primary"><icon class="pi pi-home text-xl"></icon></a>
-                <a href="/auth/logout" class="text-primary"><icon class="pi pi-sign-out text-xl"></icon></a>
+                <LanguageSwitcher />
+                <a href="/" class="text-primary" :title="$t('common.home')" :aria-label="$t('common.home')"><icon class="pi pi-home text-xl"></icon></a>
+                <a href="/auth/logout" class="text-primary" :title="$t('common.sign_out')" :aria-label="$t('common.sign_out')"><icon class="pi pi-sign-out text-xl"></icon></a>
             </div>
         </div>
     </div>

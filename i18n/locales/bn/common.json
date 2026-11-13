@@ -1,0 +1,63 @@
+{
+    "app": {
+        "title": "পেমেন্ট পোর্টাল"
+    },
+    "common": {
+        "language": "ভাষা",
+        "open_menu": "মেনু খুলুন",
+        "toggle_menu": "মেনু দেখান বা লুকান",
+        "home": "হোম",
+        "sign_out": "সাইন আউট",
+        "loading": "লোড হচ্ছে…",
+        "go_to_dashboard": "ড্যাশবোর্ডে যান",
+        "dashboard": "ড্যাশবোর্ড",
+        "cancel": "বাতিল",
+        "proceed": "এগিয়ে যান",
+        "view": "দেখুন",
+        "download": "ডাউনলোড",
+        "print": "প্রিন্ট",
+        "submit": "জমা দিন",
+        "actions": "কার্যক্রম",
+        "status": "অবস্থা",
+        "date": "তারিখ",
+        "amount": "পরিমাণ",
+        "name": "নাম",
+        "no_data": "কোনো তথ্য পাওয়া যায়নি",
+        "success_title": "সফল!",
+        "warning_title": "সতর্কতা!",
+        "error_title": "ত্রুটি",
+        "logo_alt": "লোগো"
+    },
+    "errors": {
+        "generic": "কিছু একটা ভুল হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
+        "too_many_attempts": "অনেকবার চেষ্টা করা হয়েছে। এক মিনিট অপেক্ষা করে আবার চেষ্টা করুন।",
+        "unexpected": "একটি অপ্রত্যাশিত ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
+        "login_failed": "সাইন ইন করার সময় একটি ত্রুটি হয়েছে।",
+        "empty_field": "ঘরটি খালি রাখা যাবে না!",
+        "missing_value": "ফর্মের একটি তথ্য দেওয়া হয়নি।",
+        "data_added": "তথ্য সফলভাবে যুক্ত হয়েছে!"
+    },
+    "nav": {
+        "home": "হোম",
+        "dashboard": "ড্যাশবোর্ড",
+        "payments": "পেমেন্ট",
+        "invoices": "ইনভয়েস",
+        "available_payment": "পরিশোধযোগ্য ফি",
+        "logout": "সাইন আউট"
+    },
+    "student": {
+        "heading": "{name} (SID: {id})",
+        "student_id": "শিক্ষার্থী আইডি",
+        "name": "নাম",
+        "roll": "রোল নম্বর",
+        "category": "ক্যাটাগরি",
+        "department": "বিভাগ",
+        "class": "শ্রেণি",
+        "shift": "শিফট",
+        "section": "শাখা",
+        "group": "গ্রুপ",
+        "academic_year": "শিক্ষাবর্ষ",
+        "session": "সেশন",
+        "class_shift_section": "শ্রেণি-শিফট-শাখা"
+    }
+}

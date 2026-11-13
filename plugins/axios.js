@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useAuthStore } from '~/stores/auth';
 import { useRouter } from 'nuxt/app';
+import { currentLocale } from '~/utils/i18n';
 
 export default defineNuxtPlugin((NuxtApp) => {
     const config = useRuntimeConfig();
@@ -12,6 +13,8 @@ export default defineNuxtPlugin((NuxtApp) => {
 
     axios.interceptors.request.use(
         async (config) => {
+            // Let the API answer in the user's language (en / bn / ar).
+            config.headers['Accept-Language'] = currentLocale.value;
             const expirationThreshold = 30; // Threshold in seconds
             const accessTokenExpiry = authStore.accessTokenExpiry;
             const isRefreshTokenRequest = config.url === 'api/operation-portal/refresh'; // Check if it's a refresh token request

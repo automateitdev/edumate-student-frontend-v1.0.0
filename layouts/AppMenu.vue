@@ -1,24 +1,27 @@
 <script setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import AppMenuItem from './AppMenuItem.vue';
-const model = ref([
+
+const { t } = useI18n();
+// computed so the labels re-translate when the language changes
+const model = computed(() => [
     {
-        label: 'Home',
-        items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
+        label: t('nav.home'),
+        items: [{ label: t('nav.dashboard'), icon: 'pi pi-fw pi-home', to: '/' }]
     },
   
 
     {
-        label: 'Payments',
+        label: t('nav.payments'),
         items: [
        
             { 
-                label: 'Invoices', 
+                label: t('nav.invoices'),
                 icon: 'pi pi-fw pi-file',
                 to: '/payment/invoices' 
             },
             {
-                label: 'Available payment',
+                label: t('nav.available_payment'),
                 icon: 'pi pi-fw pi-wallet',
                 to: '/payment/payable'
             }
@@ -29,7 +32,7 @@ const model = ref([
     {
         items: [
             {
-                label: 'Logout',
+                label: t('nav.logout'),
                 icon: 'pi pi-fw pi-sign-out',
                 to: '/auth/Logout'
             }
