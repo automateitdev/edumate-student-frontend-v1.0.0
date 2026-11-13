@@ -27,12 +27,12 @@ useVisibilityChange(async () => {
             <template #content>
                 <div class="flex flex-wrap justify-content-start align-items-center gap-3">
                     <div>
-                        <img :src="user.institute_logo" alt="Institute Logo" style="max-width: 7rem;">
+                        <img :src="user.institute_logo" :alt="$t('dashboard.institute_logo_alt')" style="max-width: 7rem;">
                     </div>
                     <div>
                         <p class="p-0 m-0 text-3xl font-bold text-primary">{{ user.institute_name }}</p>
-                        <p class="p-0 m-0 text-lg">Institut ID: {{ user.institute_address }}</p>
-                        <p class="p-0 m-0 text-lg font-bold">Institute ID: {{ user.institute_id }}</p>
+                        <p class="p-0 m-0 text-lg">{{ $t('dashboard.address') }}: {{ user.institute_address }}</p>
+                        <p class="p-0 m-0 text-lg font-bold">{{ $t('dashboard.institute_id') }}: {{ user.institute_id }}</p>
                     </div>
                 </div>
             </template>
@@ -43,13 +43,13 @@ useVisibilityChange(async () => {
             <Card class="w-full">
                 <template #title>
                     <i class="pi pi-user text-primary mr-2"></i>
-                    <span class="text-primary">Student Information</span>
+                    <span class="text-primary">{{ $t('dashboard.student_info') }}</span>
                 </template>
                 <template #content>
-                    <p class="capitalize text-lg m-1 p-0"><b>Name:</b> {{ user.student_name }}</p>
-                    <p class="capitalize text-lg m-1 p-0"><b>Student ID:</b> {{ user.student_id }}</p>
-                    <p class="capitalize text-lg m-1 p-0"><b>Roll No:</b> {{ user.roll }}</p>
-                    <p class="capitalize text-lg m-1 p-0"><b>Category:</b> {{ user.category }}</p>
+                    <p class="capitalize text-lg m-1 p-0"><b>{{ $t('student.name') }}:</b> {{ user.student_name }}</p>
+                    <p class="capitalize text-lg m-1 p-0"><b>{{ $t('student.student_id') }}:</b> {{ user.student_id }}</p>
+                    <p class="capitalize text-lg m-1 p-0"><b>{{ $t('student.roll') }}:</b> {{ user.roll }}</p>
+                    <p class="capitalize text-lg m-1 p-0"><b>{{ $t('student.category') }}:</b> {{ user.category }}</p>
                 </template>
             </Card>
 
@@ -57,16 +57,16 @@ useVisibilityChange(async () => {
             <Card class="w-full">
                 <template #title>
                     <i class="pi pi-book text-primary mr-2"></i>
-                    <span class="text-primary">Academic Details</span>
+                    <span class="text-primary">{{ $t('dashboard.academic_details') }}</span>
                 </template>
                 <template #content>
-                    <p class="capitalize text-lg m-0 p-0"><b>Department:</b> {{ user.department_name }}</p>
-                    <p class="capitalize text-lg m-0 p-0"><b>Class:</b> {{ user.class_name }}</p>
-                    <p class="capitalize text-lg m-0 p-0"><b>Shift:</b> {{ user.shift }}</p>
-                    <p class="capitalize text-lg m-0 p-0"><b>Section:</b> {{ user.section }}</p>
-                    <p class="capitalize text-lg m-0 p-0"><b>Group:</b> {{ user.group }}</p>
-                    <p class="capitalize text-lg m-0 p-0"><b>Academic Year:</b> {{ user.academic_year }}</p>
-                    <p class="capitalize text-lg m-0 p-0"><b>Session:</b> {{ user.academic_session }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.department') }}:</b> {{ user.department_name }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.class') }}:</b> {{ user.class_name }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.shift') }}:</b> {{ user.shift }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.section') }}:</b> {{ user.section }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.group') }}:</b> {{ user.group }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.academic_year') }}:</b> {{ user.academic_year }}</p>
+                    <p class="capitalize text-lg m-0 p-0"><b>{{ $t('student.session') }}:</b> {{ user.academic_session }}</p>
                 </template>
             </Card>
         </div>

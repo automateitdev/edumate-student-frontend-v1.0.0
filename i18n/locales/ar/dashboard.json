@@ -1,0 +1,9 @@
+{
+    "dashboard": {
+        "address": "العنوان",
+        "institute_id": "رقم المؤسسة",
+        "institute_logo_alt": "شعار المؤسسة",
+        "student_info": "بيانات الطالب",
+        "academic_details": "البيانات الأكاديمية"
+    }
+}

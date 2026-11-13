@@ -1,0 +1,9 @@
+{
+    "dashboard": {
+        "address": "Address",
+        "institute_id": "Institute ID",
+        "institute_logo_alt": "Institute logo",
+        "student_info": "Student Information",
+        "academic_details": "Academic Details"
+    }
+}

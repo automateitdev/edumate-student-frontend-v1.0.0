@@ -1,0 +1,9 @@
+{
+    "dashboard": {
+        "address": "ঠিকানা",
+        "institute_id": "প্রতিষ্ঠান আইডি",
+        "institute_logo_alt": "প্রতিষ্ঠানের লোগো",
+        "student_info": "শিক্ষার্থীর তথ্য",
+        "academic_details": "একাডেমিক তথ্য"
+    }
+}
