@@ -15,7 +15,6 @@
         "proceed": "Proceed",
         "view": "View",
         "download": "Download",
-        "print": "Print",
         "submit": "Submit",
         "actions": "Actions",
         "status": "Status",
@@ -30,7 +29,6 @@
     },
     "errors": {
         "generic": "Something went wrong. Please try again.",
-        "too_many_attempts": "Too many attempts. Wait a minute and try again.",
         "unexpected": "An unexpected error occurred. Please try again.",
         "login_failed": "An error occurred during sign-in.",
         "empty_field": "Field must not be empty!",
