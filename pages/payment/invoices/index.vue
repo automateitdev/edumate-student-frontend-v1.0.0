@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import axios from 'axios';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
@@ -9,6 +9,9 @@ import Button from 'primevue/button';
 import html2pdf from 'html2pdf.js';
 import { useAuthStore } from '@/stores/auth';
 import { storeToRefs } from 'pinia';
+import { intlLocale, dateLocale } from '~/utils/i18n';
+
+const { t } = useI18n();
 
 const { fetchInvoices } = usePaymentStore();
 const { invoices, loading } = storeToRefs(usePaymentStore());
@@ -24,10 +27,10 @@ const instituteLogo = localStorage.getItem('institute_logo');
 const instituteName = localStorage.getItem('institute_name');
 const departmentName = localStorage.getItem('department_name');
 const base64Logo = ref(null);
-const formatOptions = [
-    { label: 'A5 Single', value: 'a5' },
-    { label: 'A4 Double', value: 'a4' }
-];
+const formatOptions = computed(() => [
+    { label: t('payment.invoices.format_a5'), value: 'a5' },
+    { label: t('payment.invoices.format_a4'), value: 'a4' }
+]);
 
 async function convertImageToBase64(url) {
     try {
@@ -131,6 +134,16 @@ function printInvoice() {
     };
 }
 
+// On-screen table: follows the chosen language. formatNumber/fmtDate below stay
+// fixed because they also fill the printed money receipt.
+const formatAmountUi = (value) => Number(value).toLocaleString(intlLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtDateUi = (d) => {
+    if (!d) return '-';
+    const dt = d instanceof Date ? d : new Date(d);
+    if (isNaN(dt)) return '-';
+    return dt.toLocaleDateString(dateLocale(), { timeZone: 'Asia/Dhaka', day: '2-digit', month: 'short', year: 'numeric' });
+};
+
 function formatNumber(value) {
     return Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
@@ -168,13 +181,13 @@ const getStatus = (state) => {
     console.log(state);
     switch (state) {
         case 'COMPLETED':
-            return 'success';
+            return t('payment.status.success');
 
         case 'PENDING':
-            return 'pending';
+            return t('payment.status.pending');
 
         case 'INTENDED':
-            return 'requested';
+            return t('payment.status.requested');
 
         default:
             return state;
@@ -194,26 +207,26 @@ useVisibilityChange(() => {
     <Card class="mb-3">
         <template #title>
             <div class="flex flex-wrap gap-4">
-                <p class="p-0 m-0 text-primary">{{ user.student_name }} (SID: {{ user.student_id }})</p>
+                <p class="p-0 m-0 text-primary">{{ $t('student.heading', { name: user.student_name, id: user.student_id }) }}</p>
             </div>
         </template>
         <template #content>
             <div class="flex flex-wrap justify-content-start align-items-top gap-4 capitalize">
                 <div>
-                    <p class="p-0 m-0">Academic Year: {{ user.academic_year }}</p>
-                    <p class="p-0 m-0">Department: {{ user.department_name }}</p>
-                    <p class="p-0 m-0">Class-Shift-Section: {{ user.class_name }}-{{ user.shift }}-{{ user.section }}</p>
+                    <p class="p-0 m-0">{{ $t('student.academic_year') }}: {{ user.academic_year }}</p>
+                    <p class="p-0 m-0">{{ $t('student.department') }}: {{ user.department_name }}</p>
+                    <p class="p-0 m-0">{{ $t('student.class_shift_section') }}: {{ user.class_name }}-{{ user.shift }}-{{ user.section }}</p>
                 </div>
 
                 <div>
-                    <p class="p-0 m-0">Group: {{ user.group }}</p>
-                    <p class="p-0 m-0">Roll No: {{ user.roll }}</p>
+                    <p class="p-0 m-0">{{ $t('student.group') }}: {{ user.group }}</p>
+                    <p class="p-0 m-0">{{ $t('student.roll') }}: {{ user.roll }}</p>
                 </div>
             </div>
         </template>
     </Card>
     <Card>
-        <template #title>Payment Invoices</template>
+        <template #title>{{ $t('payment.invoices.title') }}</template>
         <template #content>
             <DataTable
                 size="small"
@@ -232,10 +245,10 @@ useVisibilityChange(() => {
             >
                 <template #header>
                     <div class="flex flex-wrap gap-2 justify-content-start align-items-center">
-                        <Dropdown v-model="selectedFormat" :options="formatOptions" optionLabel="label" optionValue="value" placeholder="Select pdf Format" v-if="invoices.length" />
+                        <Dropdown v-model="selectedFormat" :options="formatOptions" optionLabel="label" optionValue="value" :placeholder="$t('payment.invoices.select_format')" v-if="invoices.length" />
                     </div>
                 </template>
-                <template #empty><Message severity="warn" :closable="false">No invoice loaded!</Message></template>
+                <template #empty><Message severity="warn" :closable="false">{{ $t('payment.invoices.empty') }}</Message></template>
                 <template #loading>
                     <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
                         <g fill="none" stroke="rgb(237, 251, 251)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -249,41 +262,41 @@ useVisibilityChange(() => {
                         </g>
                     </svg>
                 </template>
-                <Column field="invoice" header="Invoice No" />
-                <Column field="payment_date" header="Date">
+                <Column field="invoice" :header="$t('payment.invoices.invoice_no')" />
+                <Column field="payment_date" :header="$t('common.date')">
                     <template #body="{ data }">
-                        {{ fmtDate(data.payment_date) }}
+                        {{ fmtDateUi(data.payment_date) }}
                     </template>
                 </Column>
-                <Column field="pay_amount" header="Amount">
+                <Column field="pay_amount" :header="$t('common.amount')">
                     <template #body="{ data }">
-                        {{ formatNumber(data.pay_amount) }}
+                        {{ formatAmountUi(data.pay_amount) }}
                     </template>
                 </Column>
 
-                <Column field="payment_method" header="Method" />
-                <Column header="Name">
+                <Column field="payment_method" :header="$t('payment.invoices.method')" />
+                <Column :header="$t('common.name')">
                     <template #body="{ data }">
                         {{ data.pay_invoice_details[0]?.student_name ?? '-' }}
                     </template>
                 </Column>
 
-                <Column field="payment_state" header="Status">
+                <Column field="payment_state" :header="$t('common.status')">
                     <template #body="slotProps">
                         <Tag :value="getStatus(slotProps.data.payment_state)" :severity="getSeverity(slotProps.data.payment_state)" class="uppercase" />
                     </template>
                 </Column>
 
-                <Column header="Actions" v-if="invoices.some((invoice) => invoice.payment_state === 'COMPLETED')">
+                <Column :header="$t('common.actions')" v-if="invoices.some((invoice) => invoice.payment_state === 'COMPLETED')">
                     <template #body="{ data }">
                         <div v-if="data.payment_state === 'COMPLETED'">
-                            <Button text rounded icon="pi pi-eye" severity="info" @click="viewInvoice(data)" />
-                            <Button text rounded icon="pi pi-download" severity="success" @click="downloadInvoice(data)" :disabled="!selectedFormat" />
+                            <Button text rounded icon="pi pi-eye" severity="info" @click="viewInvoice(data)" :aria-label="$t('payment.invoices.view')" v-tooltip.top="$t('payment.invoices.view')" />
+                            <Button text rounded icon="pi pi-download" severity="success" @click="downloadInvoice(data)" :disabled="!selectedFormat" :aria-label="$t('payment.invoices.download')" v-tooltip.top="$t('payment.invoices.download')" />
                         </div>
                     </template>
                 </Column>
             </DataTable>
-            <Dialog v-model:visible="showDialog" modal header="Invoice Details" class="w-[90vw] md:w-[50vw]" :dismissableMask="true" @hide="selectedInvoice = null">
+            <Dialog v-model:visible="showDialog" modal :header="$t('payment.invoices.details')" class="w-[90vw] md:w-[50vw]" :dismissableMask="true" @hide="selectedInvoice = null">
                 <div id="print-area" ref="receiptRef" class="receipt-root" v-if="selectedInvoice">
                     <div class="receipt-header">
                         <div class="logo-and-info">

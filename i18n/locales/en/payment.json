@@ -1,0 +1,62 @@
+{
+    "payment": {
+        "payable": {
+            "title": "Payable List",
+            "payment_amount": "Payment amount: ৳ {amount}",
+            "select_to_pay": "Select the fees you want to pay",
+            "pay_now": "Pay Now",
+            "fee_head": "Fee Head",
+            "fee_subhead": "Fee Subhead",
+            "select_subheads": "Select fee subheads",
+            "total_payable": "Total Payable",
+            "previous_due": "Previous Due",
+            "fine": "Fine",
+            "waiver": "Waiver",
+            "payment_of": "Payment of",
+            "total_due": "Total Due",
+            "payable_date": "Payable Date",
+            "payable": "Payable",
+            "fine_added": "Fine added",
+            "fine_paid": "Fine paid",
+            "partial_amount": "Partial amount",
+            "due_amount": "Due Amount",
+            "unavailable": "Sorry! Online fee payment is currently unavailable.",
+            "confirm_title": "Payment Confirmation",
+            "confirm_amount": "Payment of: ৳ {amount}",
+            "charge_percentage": "{title} — {percent}% of total = ৳ {amount}",
+            "charge_fixed": "{title}: ৳ {amount}",
+            "pending_notice": "Please note: if you do not complete the required steps on the payment portal (for example, by closing the browser or leaving the portal), the payment will stay ‘PENDING’ for 30 minutes. During that time you will not be able to continue with that payment.",
+            "redirect_notice": "Clicking Proceed will take you to the payment gateway."
+        },
+        "invoices": {
+            "title": "Payment Invoices",
+            "heading": "Invoices",
+            "select_format": "Select PDF format",
+            "format_a5": "A5 single",
+            "format_a4": "A4 double",
+            "format_pos": "58mm POS",
+            "empty": "No invoices found.",
+            "invoice_no": "Invoice No",
+            "method": "Method",
+            "student": "Student",
+            "details": "Invoice Details",
+            "view": "View invoice",
+            "download": "Download invoice"
+        },
+        "status": {
+            "success": "Success",
+            "pending": "Pending",
+            "requested": "Requested"
+        },
+        "success": {
+            "title": "Payment Successful!",
+            "message": "Your payment has been processed successfully.",
+            "thanks": "Thank you for your payment!"
+        },
+        "fail": {
+            "title": "Payment Failed!",
+            "message": "We could not process the payment at the moment.",
+            "retry": "Please try again later."
+        }
+    }
+}

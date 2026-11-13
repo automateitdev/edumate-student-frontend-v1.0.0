@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import axios from 'axios';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
@@ -28,11 +28,12 @@ const departmentName = localStorage.getItem('department_name');
 // const instituteName = user.institute_name;
 // const departmentName = user.department_name;
 const base64Logo = ref(null);
-const formatOptions = [
-    { label: 'A5 Single', value: 'a5' },
-    { label: 'A4 Double', value: 'a4' },
-    { label: '58mm POS', value: 'pos' }
-];
+const { t } = useI18n();
+const formatOptions = computed(() => [
+    { label: t('payment.invoices.format_a5'), value: 'a5' },
+    { label: t('payment.invoices.format_a4'), value: 'a4' },
+    { label: t('payment.invoices.format_pos'), value: 'pos' }
+]);
 
 async function convertImageToBase64(url) {
     try {
@@ -149,10 +150,10 @@ onMounted(() => {
 
 <template>
     <div class="p-6">
-        <h2 class="text-2xl font-bold mb-4">Invoices</h2>
+        <h2 class="text-2xl font-bold mb-4">{{ $t('payment.invoices.heading') }}</h2>
 
         <div class="flex gap-4 mb-4">
-            <Dropdown v-model="selectedFormat" :options="formatOptions" optionLabel="label" optionValue="value" placeholder="Select Format" class="w-60" />
+            <Dropdown v-model="selectedFormat" :options="formatOptions" optionLabel="label" optionValue="value" :placeholder="$t('payment.invoices.select_format')" class="w-60" />
             <!-- <Button 
         label="Print" 
         icon="pi pi-print" 
@@ -163,27 +164,27 @@ onMounted(() => {
         </div>
 
         <DataTable :value="invoices" dataKey="id" class="shadow rounded-lg" :paginator="true" :rows="10" responsiveLayout="scroll">
-            <Column field="invoice" header="Invoice No" />
-            <Column field="payment_date" header="Date" />
-            <Column field="pay_amount" header="Amount" />
-            <Column field="payment_state" header="Status" />
-            <Column field="payment_method" header="Method" />
-            <Column header="Student">
+            <Column field="invoice" :header="$t('payment.invoices.invoice_no')" />
+            <Column field="payment_date" :header="$t('common.date')" />
+            <Column field="pay_amount" :header="$t('common.amount')" />
+            <Column field="payment_state" :header="$t('common.status')" />
+            <Column field="payment_method" :header="$t('payment.invoices.method')" />
+            <Column :header="$t('payment.invoices.student')">
                 <template #body="{ data }">
                     {{ data.pay_invoice_details[0]?.student_name ?? '-' }}
                 </template>
             </Column>
-            <Column header="Actions">
+            <Column :header="$t('common.actions')">
                 <template #body="{ data }">
                     <div class="flex gap-2">
-                        <Button label="View" icon="pi pi-eye" severity="primary" size="small" @click="viewInvoice(data)" />
-                        <Button label="Download" icon="pi pi-download" severity="success" size="small" @click="downloadInvoice(data)" :disabled="!selectedFormat" />
+                        <Button :label="$t('common.view')" icon="pi pi-eye" severity="primary" size="small" @click="viewInvoice(data)" />
+                        <Button :label="$t('common.download')" icon="pi pi-download" severity="success" size="small" @click="downloadInvoice(data)" :disabled="!selectedFormat" />
                     </div>
                 </template>
             </Column>
         </DataTable>
 
-        <Dialog v-model:visible="showDialog" modal header="Invoice Details" class="w-[90vw] md:w-[50vw]" :dismissableMask="true" @hide="selectedInvoice = null">
+        <Dialog v-model:visible="showDialog" modal :header="$t('payment.invoices.details')" class="w-[90vw] md:w-[50vw]" :dismissableMask="true" @hide="selectedInvoice = null">
             <div id="print-area" ref="receiptRef" class="receipt-root" v-if="selectedInvoice">
                 <div class="receipt-header">
                     <div class="logo-and-info">
