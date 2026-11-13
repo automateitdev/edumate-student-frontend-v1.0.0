@@ -16,6 +16,7 @@ const logoUrl = computed(() => {
 });
 
 const toast = useToast();
+const { t } = useI18n();
 const router = useRouter();
 const store = useAuthStore();
 const { authenticateUser } = store;
@@ -32,7 +33,7 @@ async function handleLogin(e) {
   if (loginSuccess) {
     router.push('/');
   } else {
-    toast.add({ severity: 'error', summary: 'Error Message', detail: error, life: 5000 });
+    toast.add({ severity: 'error', summary: t('auth.login.failed_title'), detail: error, life: 5000 });
   }
 }
 
@@ -62,13 +63,16 @@ useVisibilityChange(() => {
         <!-- Form -->
         <div class="form-col">
           <div class="form-card">
-            <div class="text-2xl font-bold m-0 text-primary mb-3">Payment Portal</div>
+            <div class="flex align-items-center justify-content-between gap-2 mb-3">
+              <div class="text-2xl font-bold m-0 text-primary">{{ $t('app.title') }}</div>
+              <LanguageSwitcher />
+            </div>
             <form @submit="handleLogin">
               <IconField iconPosition="left" class="mb-2">
                 <InputIcon class="pi pi-home"></InputIcon>
                 <InputText
                   v-model="user.institute_id"
-                  placeholder="Institute ID / EIIN"
+                  :placeholder="$t('auth.login.institute_id')"
                   class="w-full"
                   required
                 />
@@ -78,7 +82,7 @@ useVisibilityChange(() => {
                 <InputIcon class="pi pi-user"></InputIcon>
                 <InputText
                   v-model="user.custom_student_id"
-                  placeholder="Student ID"
+                  :placeholder="$t('auth.login.student_id')"
                   class="w-full"
                   required
                 />
@@ -86,7 +90,7 @@ useVisibilityChange(() => {
 
               <Button
                 type="submit"
-                label="Continue"
+                :label="$t('auth.login.continue')"
                 icon="pi pi-arrow-right"
                 class="block py-0 mx-auto"
                 rounded
