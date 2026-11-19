@@ -25,7 +25,17 @@
         "success_title": "Success!",
         "warning_title": "Warning!",
         "error_title": "Error",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "today": "Today",
+        "clear": "Clear",
+        "password_prompt": "Enter a password",
+        "password_weak": "Weak",
+        "password_medium": "Medium",
+        "password_strong": "Strong",
+        "no_options": "No options found",
+        "no_selection": "Nothing selected",
+        "yes": "Yes",
+        "no": "No"
     },
     "errors": {
         "generic": "Something went wrong. Please try again.",

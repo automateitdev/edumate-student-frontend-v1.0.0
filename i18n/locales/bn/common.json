@@ -25,7 +25,17 @@
         "success_title": "সফল!",
         "warning_title": "সতর্কতা!",
         "error_title": "ত্রুটি",
-        "logo_alt": "লোগো"
+        "logo_alt": "লোগো",
+        "today": "আজ",
+        "clear": "মুছুন",
+        "password_prompt": "পাসওয়ার্ড লিখুন",
+        "password_weak": "দুর্বল",
+        "password_medium": "মাঝারি",
+        "password_strong": "শক্তিশালী",
+        "no_options": "কোনো অপশন নেই",
+        "no_selection": "কিছু বাছাই করা হয়নি",
+        "yes": "হ্যাঁ",
+        "no": "না"
     },
     "errors": {
         "generic": "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।",

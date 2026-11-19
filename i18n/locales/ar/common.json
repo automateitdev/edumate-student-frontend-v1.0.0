@@ -25,7 +25,17 @@
         "success_title": "تم بنجاح!",
         "warning_title": "تنبيه!",
         "error_title": "خطأ",
-        "logo_alt": "الشعار"
+        "logo_alt": "الشعار",
+        "today": "اليوم",
+        "clear": "مسح",
+        "password_prompt": "أدخل كلمة المرور",
+        "password_weak": "ضعيفة",
+        "password_medium": "متوسطة",
+        "password_strong": "قوية",
+        "no_options": "لا توجد خيارات",
+        "no_selection": "لم يتم تحديد شيء",
+        "yes": "نعم",
+        "no": "لا"
     },
     "errors": {
         "generic": "حدث خطأ، يُرجى المحاولة مرة أخرى.",
