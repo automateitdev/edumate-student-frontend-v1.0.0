@@ -21,7 +21,7 @@ definePageMeta({
                         </span>
                         <span class="ml-4 flex flex-column">
                             <span class="text-900 lg:text-xl font-medium mb-0 block">{{ $t('auth.not_found.faq') }}</span>
-                            <span class="text-600 lg:text-xl">Ultricies mi quis hendrerit dolor.</span>
+                            <span class="text-600 lg:text-xl">{{ $t('auth.not_found.faq_hint') }}</span>
                         </span>
                     </router-link>
                     <router-link to="/" class="w-full flex align-items-center py-5 border-300 border-bottom-1">
@@ -30,7 +30,7 @@ definePageMeta({
                         </span>
                         <span class="ml-4 flex flex-column">
                             <span class="text-900 lg:text-xl font-medium mb-0">{{ $t('auth.not_found.solution_center') }}</span>
-                            <span class="text-600 lg:text-xl">Phasellus faucibus scelerisque eleifend.</span>
+                            <span class="text-600 lg:text-xl">{{ $t('auth.not_found.solution_center_hint') }}</span>
                         </span>
                     </router-link>
                     <router-link to="/" class="w-full flex align-items-center mb-5 py-5 border-300 border-bottom-1">
@@ -39,7 +39,7 @@ definePageMeta({
                         </span>
                         <span class="ml-4 flex flex-column">
                             <span class="text-900 lg:text-xl font-medium mb-0">{{ $t('auth.not_found.permission_manager') }}</span>
-                            <span class="text-600 lg:text-xl">Accumsan in nisl nisi scelerisque</span>
+                            <span class="text-600 lg:text-xl">{{ $t('auth.not_found.permission_manager_hint') }}</span>
                         </span>
                     </router-link>
                 </div>
